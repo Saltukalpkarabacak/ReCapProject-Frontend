@@ -1,7 +1,7 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-<table class="table">
+<table class="table" *ngIf="carDetail==false">
     <thead>
         <tr>
             <th>ID</th>
@@ -10,10 +10,29 @@
             <th>DAILYPRICE</th>
         </tr>
     </thead>
-    <tr *ngFor="let car of cars">    
+    <tr *ngFor="let car of cars" (click)="setCurrentCar(car)" 
+    routerLink="/cars/{{car.id}}">    
         <td>{{car.id}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.dailyPrice}}</td>
     </tr>
 </table>
+
+<div class="card" style="width: 18rem;"  *ngIf="carDetail==true" >
+    <div *ngFor="let car of cars">
+    <img src="{{imageBasePath}}/{{car.image}}"class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{car.brandName}}</h5>
+      <p class="card-text">{{car.colorName}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{car.dailyPrice}}</li>
+   </ul>
+    <div class="card-body">
+        <button type="button" class="btn btn-primary" (click)="closeDetail()">Geri</button>
+      
+    </div>
+   </div>
+
+  </div>
