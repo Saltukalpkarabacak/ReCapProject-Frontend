@@ -1,3 +1,10 @@
+<div class="mb-3">
+ 
+    <input type="email"[(ngModel)]="filterText" class="form-control" 
+    id="filterText" 
+    placeholder="search brand"> 
+  </div>
+
 <ul class="list-group">
 
     <li routerLink="/cars"[class]="getAllBrandClass()">
@@ -5,9 +12,9 @@
 
     <li (click)="setCurrentBrand(brand)" 
     routerLink="/cars/brand/{{brand.id}}"
-    *ngFor="let brand of brands"
+    *ngFor="let brand of brands |filterBrand:filterText"
      [class]="getCurrentBrandClass(brand)">
-     {{brand.name}}</li>
+     {{brand.name}}</li> 
 </ul>
 
-<h5 *ngIf="currentBrand">{{currentBrand.name}}</h5>
+<!-- <h5 *ngIf="currentBrand">{{currentBrand.name}}</h5> --> 

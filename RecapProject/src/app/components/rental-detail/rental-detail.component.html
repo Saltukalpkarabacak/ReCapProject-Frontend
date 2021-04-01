@@ -1,0 +1,91 @@
+<div *ngIf="Cost">
+ <div  class="alert alert-success " role="alert" *ngFor="let car of cars">
+     Total Price : {{TotalPrice |currency}} -Daily Price : {{car.dailyPrice |currency}} - Damage Cost : {{car.dailyPrice |vatAddeed:40 |currency}} 
+  </div>
+</div>
+
+<div class="card-footer  mt-3 mr-3" style="background-color:#f2f2f2;">
+<form action="charge işlemi adresi" method="post" name="checkout-form" id="checkout-form">
+    <div class="row">
+        
+     <div class="col-md-6">
+        <h6>Kira başlangıç tarihi</h6>
+        <input type="date" class="form-control"name="rentdate" [(ngModel)]="SelectedRentDate">
+    </div> 
+
+    <div class="col-md-6">
+        <h6>Kira bitiş tarihi</h6>
+        <input type="date" class="form-control"name="returndate"[(ngModel)]="SelectedReturnDate">
+    </div>
+     
+    
+    </div><br>
+    <div *ngFor="let car of cars">
+        <button type="button" class="btn btn-danger" (click)="setCost(car.dailyPrice)">Tarihleri Onaylıyorum</button>
+    </div><br>
+    
+    <div class="form-floating mb-3">
+      <input type="text" name="cardHolderName" id="cardHolderName" class="form-control" placeholder="Kart üzerindeki isim">
+            <label for="floatingInput">Kart üzerindeki isim</label>
+      </div>
+    
+      <div class="form-floating mb-3">
+        <input  type="text" name="cardNumber" maxlength="16" id="cardNumber" class="form-control" placeholder="Kart no">
+            <label for="floatingInput">Kart no</label>
+      </div>
+      
+    <div class="row">
+
+    <div class="col-md-4">
+    <div class="inputbox mt-3 mr-2">
+    <select class="form-select" name="expMonth" id="expMonth" data-paynet="exp-month" placeholder="Gün">
+                    <option value="">Ay</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="inputbox mt-3 mr-2">
+        <select class="form-select"name="expYear" id="expYear" data-paynet="exp-year" >
+                        <option value="">Yıl</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+        </select>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+        <div  class="inputbox mt-3 mr-2">
+        <input type="password" maxlength="4" name="cvv" id="cvv" data-paynet="cvv" class="form-control" placeholder="Cvv" value="" />
+        </div>
+        </div>
+   </div><br>
+    
+   <div id="isTds" >
+    <label>
+    <input type="checkbox" name="tds" id="tds" data-paynet="do3D" checked="checked" />3D Ödeme
+    </label>
+    </div><br>
+
+    <div >
+    </div>
+   
+    <button type="button" class="btn btn-primary" (click)="getRentalsDateControl()"><strong>{{TotalPrice|currency}}</strong> Kirala</button>
+
+    </form>
+</div>    
