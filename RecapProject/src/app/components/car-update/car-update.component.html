@@ -1,0 +1,22 @@
+<table class="table" >
+    <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>BRAND</th>
+            <th>COLOR</th>
+            <th>DAILYPRICE</th>
+            <th>Cost vehicle damage</th>
+            
+        </tr>
+    </thead>
+    <tr *ngFor="let car of cars"  routerLink="/cars/update/{{car.id}}">  
+        <td><img src="{{imageBasePath}}/{{car.image}}"class="img-fluid img-thumbnail " style="max-width:150px;" alt="..."></td> 
+        <td>{{car.id}}</td>
+        <td>{{car.brandName |uppercase}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice |currency}}</td>
+        <td>{{car.dailyPrice |vatAddeed:40 |currency}}</td>
+  
+    </tr>
+</table>

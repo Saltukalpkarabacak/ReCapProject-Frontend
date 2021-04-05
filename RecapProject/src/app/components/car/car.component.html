@@ -2,18 +2,18 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 
-  <div class="mb-3">
-
+ <div class="md-3">
     <input type="email"[(ngModel)]="filterText" class="form-control" 
     id="filterText" 
-    placeholder="search car"> 
+    placeholder="search car">
   </div>
+
 
   <div *ngIf="filterText" class="alert alert-success">
       {{filterText}} aradınız
-  </div>
-
-<table class="table" *ngIf="carDetail==false">
+  </div><br>
+<div class="card-footer " style="background-color:white;">
+<table class="table">
     <thead>
         <tr>
             <th></th>
@@ -25,8 +25,8 @@
         </tr>
     </thead>
     <tr *ngFor="let car of cars |filterPipe:filterText" (click)="setCurrentCar(car)" 
-    routerLink="/cars/{{car.id}}">  
-        <td><img src="{{imageBasePath}}/{{car.image}}"class="img-fluid img-thumbnail " style="max-width:150px;" alt="..."></td>
+    routerLink="/cars/{{car.id}}" class="table-active">  
+        <td><img src="{{imageBasePath}}/{{car.image}}"class="img-fluid img-thumbnail " style="max-width:150px;" alt="..."></td> 
         <td>{{car.id}}</td>
         <td>{{car.brandName |uppercase}}</td>
         <td>{{car.colorName}}</td>
@@ -34,4 +34,7 @@
         <td>{{car.dailyPrice |vatAddeed:40 |currency}}</td>
     </tr>
 </table>
+</div>
+
+
 

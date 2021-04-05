@@ -1,0 +1,12 @@
+<div>
+    <ul class="list-group" >
+        <li class="list-group-item" *ngFor="let color of colors" style="border-color: cadetblue;">
+          <h5><strong>{{color.name}}</strong></h5>
+          <button class="btn btn-fill btn-danger" 
+          style="margin-inline-start:850px; "
+          routerLink="{{color.id}}">
+              Delete</button>
+        </li>
+    </ul>
+    </div>
+

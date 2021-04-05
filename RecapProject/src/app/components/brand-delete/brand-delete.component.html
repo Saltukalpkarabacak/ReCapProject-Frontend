@@ -1,0 +1,12 @@
+<div>
+<ul class="list-group" >
+    <li class="list-group-item" *ngFor="let brand of brands" style="border-color: cadetblue;">
+      <h5><strong>{{brand.name}}</strong></h5>
+      <button class="btn btn-fill btn-danger " 
+      style="margin-inline-start:850px; "
+      routerLink="{{brand.id}}">
+          Delete</button>
+    </li>
+</ul>
+</div>
+
