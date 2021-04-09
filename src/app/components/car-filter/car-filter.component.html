@@ -1,0 +1,44 @@
+<div class="row mb-2">
+    <div class="col col-4">
+        <select   class="form-select" [(ngModel)]="brandFilter">
+            <option *ngFor="let brand of brands" [value]="brand.id" [selected]="brandFilter==brand.id">{{brand.name}}</option>
+          </select>
+    </div>
+    <div class="col col-4">
+        <select class="form-select" [(ngModel)]="colorFilter">
+            <option *ngFor="let color of colors" [value]="color.id" [selected]="colorFilter==color.id"  >{{color.name}}</option>
+          </select>
+    </div>
+    <div class="col col-2">
+        <a 
+        routerLink="/filter/{{colorFilter}}/{{brandFilter}}" class="btn btn-warning">Filter
+       </a>
+        </div>
+        <div class="col col-2">
+            <a 
+            routerLink="/cars" class="btn btn-danger">Clean</a>
+        </div><br><br>
+
+<div class="card-footer" style="background-color:white;">     
+<table class="table" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>BRAND</th>
+            <th>COLOR</th>
+            <th>DAILYPRICE</th>
+            <th>Kdv'li fiyat</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let car of cars " (click)="setCurrentCar(car)" 
+    routerLink="/cars/{{car.id}}">    
+        <td>{{car.id}}</td>
+        <td>{{car.brandName |uppercase}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice}}</td>
+        <td>{{car.dailyPrice |vatAddeed:40 |currency}}</td>
+    </tr>
+</table>
+</div>   
+
+</div>

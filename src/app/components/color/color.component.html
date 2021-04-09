@@ -1,0 +1,21 @@
+<div class="mb-3">
+   
+    <input type="email"[(ngModel)]="filterText" class="form-control" 
+    id="filterText" 
+    placeholder="search color"> 
+</div>
+
+<ul  class="list-group">
+    <li (click)="setCurrentColor(color)"  
+    routerLink="/cars/color/{{color.id}}"
+    *ngFor="let color of colors |filterColor:filterText"
+     [class]="getCurrentColorClass(color)">{{color.name}}</li>
+
+ 
+</ul>
+
+
+
+
+
+  

@@ -1,0 +1,107 @@
+<div *ngIf="Cost">
+ <div  class="alert alert-success " role="alert" *ngFor="let car of cars">
+     Total Price : {{TotalPrice |currency}} -Daily Price : {{car.dailyPrice |currency}} - Damage Cost : {{car.dailyPrice |vatAddeed:40 |currency}} 
+  </div>
+</div>
+
+<div class="card-footer  mt-3 mr-3" style="background-color:white;">
+<form action="charge işlemi adresi" method="post" name="checkout-form" id="checkout-form">
+    <div class="row">
+        
+     <div class="col-md-6">
+        <h6>Start Rent Date</h6>
+        <input type="date" class="form-control"name="rentdate" [(ngModel)]="SelectedRentDate">
+    </div> 
+
+    <div class="col-md-6">
+        <h6>End Rent Date</h6>
+        <input type="date" class="form-control"name="returndate"[(ngModel)]="SelectedReturnDate">
+    </div>
+     
+    
+    </div><br>
+    <div *ngFor="let car of cars">
+        <button type="button" class="btn btn-danger" (click)="setCost(car.dailyPrice);getRentalsDateControl();">Accept Dates</button>
+    </div>
+
+    <div style="margin-top: 30px;margin-bottom: 20px;">
+    <h4><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+        <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+        <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+      </svg> Card Informations</h4>
+    </div>
+
+    <div class="form-floating mb-3">
+        <h6 >Name on the card </h6>
+        <input type="text" name="cardHolderName" id="cardHolderName" class="form-control" placeholder="Name on the card"[(ngModel)]="name">
+        
+    </div>
+    
+      <div class="form-floating mb-3">
+        <h6>Card no</h6>
+        <input  type="text" name="cardNumber" maxlength="16" id="cardNumber" class="form-control" placeholder="Card no"[(ngModel)]="cardNo">
+           
+      </div>
+      
+    <div class="row">
+
+    <div class="col-md-4">
+    <div class="inputbox mt-3 mr-2">
+        <h6>Month</h6>
+    <select class="form-select" name="expMonth" id="expMonth" data-paynet="exp-month" placeholder="Month"[(ngModel)]="month">
+                    
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="inputbox mt-3 mr-2">
+            <h6>Year</h6>
+        <select class="form-select"name="expYear" id="expYear" data-paynet="exp-year" [(ngModel)]="year">
+                       
+                        <option value="1">1</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+        </select>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+        <div  class="inputbox mt-3 mr-2">
+            <h6>Cvv</h6>
+        <input type="number" maxlength="4" name="cvv" id="cvv" data-paynet="cvv" class="form-control" placeholder="" value="" [(ngModel)]="cvv"/>
+        </div>
+        </div>
+   </div><br>
+    
+   <div id="isTds" >
+    <label>
+    <input type="checkbox" name="tds" id="tds" data-paynet="do3D" checked="checked" />3D Secure
+    </label>
+    </div><br>
+
+    <div >
+    </div>
+   
+    <button type="button" class="btn btn-primary" (click)="isCardExist()"><strong>{{TotalPrice|currency}} </strong> Rent
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-wallet2" viewBox="0 0 16 16">
+            <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+          </svg></button>
+
+    </form>
+</div>    
