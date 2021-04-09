@@ -11,15 +11,15 @@
     </div>
     <div class="col col-2">
         <a 
-        routerLink="/filter/{{colorFilter}}/{{brandFilter}}" class="btn btn-warning">Filtrele
+        routerLink="/filter/{{colorFilter}}/{{brandFilter}}" class="btn btn-warning">Filter
        </a>
         </div>
         <div class="col col-2">
             <a 
-            routerLink="/cars" class="btn btn-danger">Temizle</a>
-        </div>
+            routerLink="/cars" class="btn btn-danger">Clean</a>
+        </div><br><br>
 
-     
+<div class="card-footer" style="background-color:white;">     
 <table class="table" >
     <thead>
         <tr>
@@ -39,6 +39,6 @@
         <td>{{car.dailyPrice |vatAddeed:40 |currency}}</td>
     </tr>
 </table>
-   
+</div>   
 
 </div>

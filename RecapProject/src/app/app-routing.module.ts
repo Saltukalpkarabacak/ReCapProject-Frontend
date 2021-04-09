@@ -20,6 +20,7 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
 import { ColorUpdateDetailComponent } from './components/color-update-detail/color-update-detail.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { RentalDetailComponent } from './components/rental-detail/rental-detail.component';
+import { RentalComponent } from './components/rental/rental.component';
 
 const routes: Routes = [
   {path: "",pathMatch:"full",component:CarComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path:"cars/:carId" ,component:CarDetailComponent},
   {path:"filter/:colorId/:brandId" ,component:CarFilterComponent},
   {path:"filter" ,component:CarFilterComponent},
-  {path:"rental/:carId" ,component:RentalDetailComponent}
+  {path:"rental/:carId" ,component:RentalDetailComponent},
+  {path:"rental" ,component:RentalComponent}
 ];
 
 @NgModule({

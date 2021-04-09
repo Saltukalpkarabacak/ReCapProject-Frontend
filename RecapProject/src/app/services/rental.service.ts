@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalCrud } from '../models/rentalCrud';
+import { ResponseModel } from '../models/responseModel';
 
 
 @Injectable({
@@ -27,5 +29,9 @@ export class RentalService {
   getRentalsDateControl(carId:number,rentDate:Date):Observable<ListResponseModel<Rental>>{
     let newPath = this.apiUrl + "getrentalsdetailsdatecontrol?carId=" + carId +"&rentDate=" +rentDate ;
     return this.httpClient.get<ListResponseModel<Rental>>(newPath)
+  }
+
+  add(rental:RentalCrud):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"add",rental);
   }
 }
