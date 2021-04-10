@@ -79,7 +79,7 @@ export class RentalDetailComponent implements OnInit {
       cvv:Number(this.cvv)
     }
     this.cardService.isCardExist(card).subscribe(response=>{
-      if(!response.success){
+      if(!response.success){ 
         this.toastrService.error("Creditcard not exist")
       }else{
         this.add();
