@@ -38,6 +38,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { CarDeleteDetailComponent } from './components/car-delete-detail/car-delete-detail.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorDeleteDetailComponent } from './components/color-delete-detail/color-delete-detail.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { ColorDeleteDetailComponent } from './components/color-delete-detail/col
     CarDeleteComponent,
     CarDeleteDetailComponent,
     ColorDeleteComponent,
-    ColorDeleteDetailComponent
+    ColorDeleteDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

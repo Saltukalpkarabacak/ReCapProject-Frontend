@@ -19,12 +19,14 @@ import { ColorDeleteDetailComponent } from './components/color-delete-detail/col
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorUpdateDetailComponent } from './components/color-update-detail/color-update-detail.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
 import { RentalDetailComponent } from './components/rental-detail/rental-detail.component';
 import { RentalComponent } from './components/rental/rental.component';
 
 const routes: Routes = [
   {path: "",pathMatch:"full",component:CarComponent},
   {path:"cars" ,component:CarComponent },
+  {path:"login" ,component:LoginComponent },
   {path:"cars/add" ,component:CarAddComponent },
   {path:"cars/delete" ,component:CarDeleteComponent },
   {path:"cars/delete/:carId" ,component:CarDeleteDetailComponent },
