@@ -89,7 +89,7 @@ export class RentalDetailComponent implements OnInit {
 
   getCarsById(carId: number) {
     this.carService.getCarsById(carId).subscribe((response) => {
-      this.cars = response.data;
+      this.cars = response.data; 
     });
   }
 
