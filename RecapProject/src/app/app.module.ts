@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
@@ -38,6 +38,8 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { CarDeleteDetailComponent } from './components/car-delete-detail/car-delete-detail.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorDeleteDetailComponent } from './components/color-delete-detail/color-delete-detail.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -72,7 +74,8 @@ import { ColorDeleteDetailComponent } from './components/color-delete-detail/col
     CarDeleteComponent,
     CarDeleteDetailComponent,
     ColorDeleteComponent,
-    ColorDeleteDetailComponent
+    ColorDeleteDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,12 @@ import { ColorDeleteDetailComponent } from './components/color-delete-detail/col
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -79,7 +79,7 @@ export class RentalDetailComponent implements OnInit {
       cvv:Number(this.cvv)
     }
     this.cardService.isCardExist(card).subscribe(response=>{
-      if(!response.success){
+      if(!response.success){ 
         this.toastrService.error("Creditcard not exist")
       }else{
         this.add();
@@ -89,7 +89,7 @@ export class RentalDetailComponent implements OnInit {
 
   getCarsById(carId: number) {
     this.carService.getCarsById(carId).subscribe((response) => {
-      this.cars = response.data;
+      this.cars = response.data; 
     });
   }
 
